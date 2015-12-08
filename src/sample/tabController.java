@@ -9,17 +9,22 @@ public class tabController {
     @FXML
     private Button Go;
     @FXML
-    private TextField omnibox;
+    private TextField omniBox;
     @FXML
     private Button newTab;
+
+    BrowserMain currentPage;
     public String url;
+
+    public void setMain(BrowserMain currentPage){
+        this.currentPage=currentPage;
+    }
 
     @FXML
     void GoNow(ActionEvent event) throws Exception {
-        url=omnibox.getText();
+        url=omniBox.getText();
         if(!(url.isEmpty())){
-            BrowserMain.setAddress(url);
-            BrowserMain.showWeb();
+            currentPage.setAddress(url);
         }
     }
 }

@@ -12,8 +12,9 @@ class Browser extends Region {
     WebView browser = new WebView();
     WebEngine webEngine = browser.getEngine();
 
-    public Browser() {
-        webEngine.load("http://" + BrowserMain.goHere());
+    public Browser(BrowserMain currentPage) {
+        System.out.println(currentPage.goHere());
+        webEngine.load("http://" + currentPage.goHere());
         getChildren().add(browser);
     }
 
