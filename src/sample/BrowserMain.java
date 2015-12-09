@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class BrowserMain extends Application {
     tabController tc;
+    browserController bc;
     Stage stage;
 
     @Override
@@ -48,8 +49,14 @@ public class BrowserMain extends Application {
     }
 
     void showWeb() throws Exception{
+        /*
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BrowserTab.fxml"));
+        Parent root = loader.load();
+        bc =loader.getController();
+        */
         stage.setTitle(goHere());
-        stage.setScene(new Scene(new Browser(this),750,500, Color.web("#666970")));
+        //stage.setScene(new Scene(root ,750,500, Color.web("#666970")));
+        stage.setScene(new Scene(new Browser(this) ,750,500, Color.web("#666970")));
         stage.show();
     }
 }

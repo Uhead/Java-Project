@@ -2,18 +2,23 @@ package sample;
 
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 class Browser extends Region {
 
+    browserController bc;
 
     WebView browser = new WebView();
     WebEngine webEngine = browser.getEngine();
 
+
+
     public Browser(BrowserMain currentPage) {
-        System.out.println(currentPage.goHere());
+        //System.out.println(currentPage.goHere());
         webEngine.load("http://" + currentPage.goHere());
         getChildren().add(browser);
     }
