@@ -10,8 +10,6 @@ import javafx.scene.web.WebView;
 
 class Browser extends Region {
 
-    browserController bc;
-
     WebView browser = new WebView();
     WebEngine webEngine = browser.getEngine();
 
@@ -21,6 +19,7 @@ class Browser extends Region {
         //System.out.println(currentPage.goHere());
         webEngine.load("http://" + currentPage.goHere());
         getChildren().add(browser);
+        System.out.println(webEngine.getLocation());
     }
 
     @Override

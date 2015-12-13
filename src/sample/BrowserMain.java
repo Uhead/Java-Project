@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class BrowserMain extends Application {
     tabController tc;
-    browserController bc;
     Stage stage;
 
     @Override
@@ -25,8 +24,6 @@ public class BrowserMain extends Application {
     private String webAddress;
 
     public static void main(String[] args){
-        //Scanner scn = new Scanner(System.in);
-        //webAddress=scn.nextLine();
         launch(args);
     }
     public String goHere(){
@@ -44,19 +41,13 @@ public class BrowserMain extends Application {
         tc.setMain(this);
 
         stage.setTitle("WebSite");
-        stage.setScene(new Scene(root,750,500));
+        stage.setScene(new Scene(root,600,500));
         stage.show();
     }
 
     void showWeb() throws Exception{
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BrowserTab.fxml"));
-        Parent root = loader.load();
-        bc =loader.getController();
-        */
         stage.setTitle(goHere());
-        //stage.setScene(new Scene(root ,750,500, Color.web("#666970")));
-        stage.setScene(new Scene(new Browser(this) ,750,500, Color.web("#666970")));
+        stage.setScene(new Scene(new Browser(this) ,600,500, Color.web("#666970")));
         stage.show();
     }
 }

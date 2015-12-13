@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.tabController">
    <children>
-      <TextField fx:id="omniBox" layoutX="109.0" layoutY="14.0" prefHeight="25.0" prefWidth="514.0" promptText="Enter the address" />
-      <Button fx:id="Go" layoutX="325.0" layoutY="68.0" mnemonicParsing="false" onAction="#GoNow" prefHeight="25.0" prefWidth="101.0" text="Go" />
+      <TextField fx:id="omniBox" layoutX="3.0" layoutY="14.0" prefHeight="25.0" prefWidth="319.0" promptText="Enter Address" />
+      <Button fx:id="Go" layoutX="331.0" layoutY="14.0" mnemonicParsing="false" onAction="#GoNow" text="Go" />
+      <MenuButton fx:id="Menu" layoutX="531.0" layoutY="14.0" mnemonicParsing="false" text="Menu">
+         <items>
+            <MenuItem fx:id="History" mnemonicParsing="false" onAction="#GoHistory" text="History" />
+            <MenuItem fx:id="Bookmarks" mnemonicParsing="false" onAction="#GoBookmarks" text="Bookmarks" />
+            <MenuItem fx:id="Settings" mnemonicParsing="false" onAction="#GoSettings" text="Settings" />
+         </items>
+      </MenuButton>
+      <TextField fx:id="Google" layoutX="369.0" layoutY="14.0" prefHeight="25.0" prefWidth="93.0" />
+      <Button fx:id="Search" layoutX="470.0" layoutY="14.0" mnemonicParsing="false" onAction="#GoGoogle" text="Search" />
+      <WebView fx:id="browser" layoutX="3.0" layoutY="39.0" prefHeight="360.0" prefWidth="594.0" />
    </children>
 </AnchorPane>
