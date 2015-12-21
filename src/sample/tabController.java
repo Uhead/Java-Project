@@ -6,10 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebView;
 
 import java.util.StringTokenizer;
 
 public class tabController{
+    @FXML
+    AnchorPane window;
     @FXML
     private Button Go,Search,newTab;
     @FXML
@@ -20,31 +24,29 @@ public class tabController{
     private MenuItem History,Bookmarks,Settings;
     BrowserMain currentPage;
 
-
-    private Browser browser;
-
-     /*public Controller(){
-         browser =new Browser(currentPage);
-         browser.webEngine.load("www.google.com");
-         //browser.getChildren().addAll(omniBox,Google,Go,Search,newTab,Menu);
-     }
-     */
+    @FXML
+    public WebView web;
 
     public String url="www.google.com";
     public StringTokenizer surl;
 
+    public void gohere(String url){
+        this.url=url;
+        web.getEngine().load("http://"+url);
+    }
 
     public void setMain(BrowserMain main){ currentPage=main;}
     @FXML
     void GoNow(ActionEvent event) throws Exception {
         url = omniBox.getText();
         if (!(url.isEmpty())) {
-            currentPage.setAddress(url);
+            gohere(url);
         }
     }
     @FXML
     void GoHistory(ActionEvent event) throws Exception {
         System.out.println("History!!");
+        System.out.println(web.getEngine().getHistory());
     }
     @FXML
     void GoBookmarks(ActionEvent event) throws Exception {
@@ -65,7 +67,7 @@ public class tabController{
         surl1.append("&ie=utf-8&oe=utf-8");
         url= String.valueOf(surl1);
         if (!(url.isEmpty())) {
-            currentPage.setAddress(url);
+            gohere(url);
         }
     }
     @FXML
@@ -76,4 +78,5 @@ public class tabController{
     void GoTab(ActionEvent event) throws Exception {
         System.out.println("Tab!!");
     }
+
 }
