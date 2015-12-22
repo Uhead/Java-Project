@@ -12,6 +12,9 @@ import java.io.IOException;
 public class BrowserMain extends Application {
     tabController tc;
     Stage stage;
+    Scene scene;
+    webHistory hc;
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -29,8 +32,25 @@ public class BrowserMain extends Application {
         tc = loader.getController();
         tc.setMain(this);
         tc.gohere("www.google.com");
-        stage.setTitle("WebSite");
-        stage.setScene(new Scene(root));
+        this.scene=new Scene(root);
+        setPage(tc.url,scene);
+    }
+
+    void setPage(String url,Scene scene){
+        stage.setTitle(url);
+        stage.setScene(scene);
         stage.show();
+    }
+
+    void getHistory() throws IOException {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("History.fxml"));
+            Parent root = loader.load();
+            hc = loader.getController();
+            hc.setTc(tc);
+            setPage("History",new Scene(root));
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }

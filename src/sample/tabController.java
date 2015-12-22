@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,6 +8,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 
 import java.util.StringTokenizer;
@@ -46,7 +48,7 @@ public class tabController{
     @FXML
     void GoHistory(ActionEvent event) throws Exception {
         System.out.println("History!!");
-        System.out.println(web.getEngine().getHistory());
+        currentPage.getHistory();
     }
     @FXML
     void GoBookmarks(ActionEvent event) throws Exception {
@@ -69,6 +71,7 @@ public class tabController{
         if (!(url.isEmpty())) {
             gohere(url);
         }
+        temp();
     }
     @FXML
     void GoSettings(ActionEvent event) throws Exception {
@@ -78,5 +81,13 @@ public class tabController{
     void GoTab(ActionEvent event) throws Exception {
         System.out.println("Tab!!");
     }
-
+    void temp(){
+        final WebHistory history = web.getEngine().getHistory();
+        history.getEntries().addListener(
+                (ListChangeListener.Change<? extends WebHistory.Entry> c) -> {
+                    c.next();
+                    c.getRemoved().stream().forEach((e) -> currentPage.hc.logs.getItems().remove(e.getUrl()));
+                    c.getAddedSubList().stream().forEach((e) -> currentPage.hc.logs.getItems().add(e.getUrl()));
+                });
+    }
 }
