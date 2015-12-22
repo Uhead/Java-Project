@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.webHistory">
    <children>
-      <Button fx:id="back" layoutX="542.0" layoutY="2.0" mnemonicParsing="false" text="Back" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="back" layoutX="542.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" text="Back" AnchorPane.rightAnchor="10.0" />
       <ListView fx:id="logs" layoutY="33.0" prefHeight="343.0" prefWidth="600.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0" />
-      <Button fx:id="go" layoutX="534.0" layoutY="374.0" mnemonicParsing="false" text="Go" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="go" layoutX="534.0" layoutY="374.0" mnemonicParsing="false" onAction="#goHistory" text="Go" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="10.0" />
    </children>
 </AnchorPane>

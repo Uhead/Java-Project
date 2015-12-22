@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -58,11 +59,13 @@ public class webHistory {
         }
     }
 
-    void goBack(){
+    @FXML
+    void goBack(ActionEvent e){
         tc.currentPage.setPage(tc.url,tc.currentPage.scene);
     }
 
-    void goHistory(){
+    @FXML
+    void goHistory(ActionEvent e){
         String url = logs.getSelectionModel().getSelectedItem();
         tc.currentPage.setPage(url,tc.currentPage.scene);
         tc.gohere(url);
